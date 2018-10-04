@@ -30,7 +30,11 @@ Thermostat.prototype.down = function() {
 
 Thermostat.prototype.reset = function () {
   this.temperature = DEFAULT_TEMP;
-}
+};
+
+Thermostat.prototype.togglePowerSavingMode = function () {
+  this.powerSavingMode = this.powerSavingMode ? false : true;
+};
 
 Thermostat.prototype.energyUsage = function () {
   if (this._isBelow(LOW_USAGE_TEMP)) {

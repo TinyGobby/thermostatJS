@@ -70,6 +70,19 @@ describe('Thermostat', function() {
     });
   });
 
+  describe("#togglePowerSavingMode", function() {
+    it("changes the power saving mode to false from true", function() {
+      thermostat.togglePowerSavingMode();
+      expect(thermostat.powerSavingMode).toEqual(false);
+    });
+
+    it("changes the power saving mode to true from false", function() {
+      thermostat.powerSavingMode = false;
+      thermostat.togglePowerSavingMode();
+      expect(thermostat.powerSavingMode).toEqual(true);
+    });
+  });
+
   describe('#energyUsage', function() {
     it('confirms low energy usage below low-usage temperature', function () {
       let lowTemp = DEFAULT_TEMP - LOW_USAGE_TEMP;

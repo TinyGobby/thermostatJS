@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Thermostat</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src='./src/thermostat.js'></script>
+    <script src='./interface.js'></script>
+  </head>
+  <body>
+    <h1>Thermostat</h1>
+    <div>
+      Current Temperature <span><label id='currentTemp'></label></span>
+    </div>
+    <table>
+      <tr>
+        <td>
+          <button type="button" id='up' class='temperatureButton'>Up</button>
+        </td>
+        <td>
+          <button type="button" id='down' class='temperatureButton'>Down</button>
+        </td>
+        <td>
+          <button type="button" id='reset' class='temperatureButton'>Reset</button>
+        </td>
+      </tr>
+    </table>
+    <div>
+      <button type="button" id='powerSavingModeBtn'>Power Saving Mode</button><label id='powerSavingMode'></label> 
+    </div>
+  </body>
+</html>
