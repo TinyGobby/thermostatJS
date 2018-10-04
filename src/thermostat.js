@@ -1,14 +1,16 @@
-const MINIMUM_TEMP = 10
-const DEFAULT_TEMP = 20
-const POWERSAVING_ON_MAX_TEMP = 25
+'use strict';
+
+const MINIMUM_TEMP = 10; //TODO: Remove from global scope
+const DEFAULT_TEMP = 20;
+const POWERSAVING_ON_MAX_TEMP = 25;
 const POWERSAVING_OFF_MAX_TEMP = 32;
-const LOW_USAGE_TEMP = 17
-const MEDIUM_USAGE_TEMP = 24 
+const LOW_USAGE_TEMP = 17;
+const MEDIUM_USAGE_TEMP = 24;
 
 
 function Thermostat() {
   this.temperature = DEFAULT_TEMP;
-  this.powerSavingMode = true
+  this.powerSavingMode = true;
 };
 
 Thermostat.prototype.up = function() {
@@ -23,11 +25,11 @@ Thermostat.prototype.down = function() {
   if (this._isBelow(MINIMUM_TEMP)) {
     throw new Error("Minimum temperature reached!");
   }
-    this.temperature--
+    this.temperature--;
 };
 
 Thermostat.prototype.reset = function () {
-  this.temperature = DEFAULT_TEMP
+  this.temperature = DEFAULT_TEMP;
 }
 
 Thermostat.prototype.energyUsage = function () {
@@ -41,7 +43,15 @@ Thermostat.prototype.energyUsage = function () {
 };
 
 Thermostat.prototype._isTemperatureReached = function() {
-  return ((this.powerSavingMode && this.temperature >= POWERSAVING_ON_MAX_TEMP) || (!this.powerSavingMode && this.temperature >= POWERSAVING_OFF_MAX_TEMP))
+  return (this._isPowerSavingOnReached() || this._isPowerSavingOffReached());
+};
+
+Thermostat.prototype._isPowerSavingOnReached = function() {
+  return (this.powerSavingMode && this.temperature >= POWERSAVING_ON_MAX_TEMP);
+};
+
+Thermostat.prototype._isPowerSavingOffReached = function() {
+  return (!this.powerSavingMode && this.temperature >= POWERSAVING_OFF_MAX_TEMP);
 };
 
 Thermostat.prototype._isBelow = function(temperature) {

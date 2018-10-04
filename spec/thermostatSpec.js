@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Thermostat', function() {
   var thermostat;
 
@@ -25,11 +27,12 @@ describe('Thermostat', function() {
     });
 
     it('should throw an error when attempting to drop temp below minimum', function () {
-      let minTemp = DEFAULT_TEMP - MINIMUM_TEMP
+      let minTemp = DEFAULT_TEMP - MINIMUM_TEMP;
 
       for (let i = 0; i < minTemp; i++) {
         thermostat.down();
       };
+      
       expect( function() { thermostat.down() } ).toThrowError('Minimum temperature reached!');
     });
   });
